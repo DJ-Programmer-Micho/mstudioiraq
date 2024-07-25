@@ -1,0 +1,11 @@
+#loadMoreNews{
+    margin: 25px;
+    padding: 0;
+}
+
+#loadMoreNews button{
+    background-color:transparent;
+    border: 0ch;
+    color: white;
+
+}

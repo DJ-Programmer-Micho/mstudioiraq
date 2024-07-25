@@ -1,0 +1,20 @@
+/* Boostrap Files */
+// @import '../node_modules/bootstrap/scss/bootstrap.scss';
+/* OWL Carousel */
+@import '../node_modules/owl.carousel/src/scss/owl.carousel.scss';
+@import '../node_modules/owl.carousel/src/scss/owl.theme.default.scss';
+
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kufam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Markazi+Text&family=Rakkas&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Redressed&family=Roboto+Slab:wght@300&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Scheherazade&display=swap');
+//includes
+@import'./include/variables';
+@import'./include/global';
+@import'./include/tGrid';
+@import'./include/loadmore';

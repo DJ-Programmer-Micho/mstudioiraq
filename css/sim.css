@@ -1,0 +1,79 @@
+.social_icon_mid {
+    display: flex;
+}
+
+.social_icon_mid li {
+    list-style: none;
+}
+
+.social_icon_mid li a {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 80px;
+    font-size: 35px;
+    margin: 0 10px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+}
+
+.social_icon_mid li a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+}
+
+.social_icon_mid li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+}
+
+.social_icon_mid li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+
+.social_icon_mid li a:hover:before {
+    top: 0;
+}
+
+.social_icon_mid li:nth-child(1) a:before {
+    background: #ff0000;
+}
+
+.social_icon_mid li:nth-child(2) a:before {
+    background: #405de6;
+}
+
+.social_icon_mid li:nth-child(3) a:before {
+    background: #fffc00;
+}
+
+.social_icon_mid li:nth-child(4) a:before {
+    background: #ff0e83;
+}
+.social_icon_mid li:nth-child(5) a:before {
+    background: #1db954;
+}
+.social_icon_mid li:nth-child(6) a:before {
+    background: #00112c;
+}
+.social_icon_mid li:nth-child(7) a:before {
+    background: #ff0092;
+}
+.social_icon_mid li:nth-child(8) a:before {
+    background: #833ab4;
+}

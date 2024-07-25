@@ -1,0 +1,227 @@
+<!doctype>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Add Artist | M Studio Iraq</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/Mstyle.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-lg d-flex justify-content-between b3 m-3">
+        <a class="navbar-brand my-auto" href="#">
+            <img src="https://i.ibb.co/f036Rm7/MET-Logo.jpg" width="65px"></a>
+        <h3 id="who" class="text-white">
+            </h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupP6ortedContent" aria-controls="navbarSupP6ortedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupP6ortedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="btn btn-outline-secondary nav-link" onclick="out()">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+
+        <div class="row mt-3">
+            <div class="col-12 mt-1 mb-3">
+                <h3 class="text-left">Image Name</h3>
+                <input type="text" id="imageName" name="imageName" class="form-control" placeholder="Image Name">
+            </div>
+            <div class="col-md-12 mt-5 mb-2">
+                <h5>General Image</h5>
+                <img id="myimg" class="img-fluid" src="../images/icons/uploadimg.png" width="200" height="200"><br>
+                <button id="select" name="select" class="btn btn-outline-primary">Select Image</button>
+                <input id="imgname" name="imgname" type="hidden" placeholder="Select Image" autocomplete="off"
+                    required>
+            </div>
+            <div class="progress form-group">
+                <div id="upP6" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                    aria-valuemax="100">
+                </div>
+            </div>
+        </div>
+
+
+
+        <input type="hidden" id="countD" required>
+        <input type="hidden" id="publisher" required>   
+
+        <div class="form-group mt-5">
+            <button id="upload" name="uplo" class="btn btn-primary btn-block">Send</button>
+            <hr>
+            <div class="progress form-group">
+                <div id="upP6" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                    aria-valuemax="100">
+                </div>
+            </div>
+            <hr>
+            <a href="../control/admin/dash.html" class="btn btn-danger btn-block">Cancel</a>
+        </div>
+
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="../db/db.js"></script>
+    <script>
+        const auth = firebase.auth();
+    </script>
+
+
+    <script>
+        /*
+    user
+    */
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+
+            const who = document.querySelector('#who');
+                var pub = user.uid;
+                db.collection('user').where("uid", "==", pub).get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        var publisherName = doc.data().publisher;
+                        who.innerHTML = "Welcome " + publisherName;
+                        document.querySelector('#publisher').value = publisherName;
+                    })
+                })
+
+
+                window.onload = function () {
+                    var input = document.getElementById("imageName").focus();
+                }
+
+
+
+                var ImgName, ImgUrl;
+                var files = [];
+                var reader;
+                const ref = db.collection("images").doc();
+                // var refc = db.doc("count/upload");
+                var refd = db.doc("countD/no");
+
+                const upload = document.querySelector("#upload");
+                // const count = document.querySelector("#imgname");
+
+
+                //Taking Number
+                refd.get().then((doc) => {
+                    if (doc && doc.exists) {
+                        const output1 = doc.data();
+                        var countdesc = output1.no - 1;
+
+                        refd.update({
+                            no: countdesc
+                        }).then(function () {
+                            document.querySelector('input[id = "imgname"]').value = countdesc;
+                            document.querySelector('#countD').value = countdesc;
+                        }).catch(function (error) {
+                            console.log("Nope, ", error);
+                        });
+                    }
+                });
+
+                //Adding Image
+                document.getElementById("select").onclick = function (e) {
+
+                    var input = document.createElement('input');
+                    input.type = 'file';
+
+                    input.onchange = e => {
+                        files = e.target.files;
+                        reader = new FileReader();
+                        reader.onload = function () {
+                            document.getElementById("myimg").src = reader.result;
+                        }
+                        reader.readAsDataURL(files[0]);
+                    }
+                    input.click();
+                }
+
+
+                upload.addEventListener("click", function () {
+
+                    imageName = document.getElementById('imageName').value;
+                    publisher = document.getElementById('publisher').value;
+                    seq = document.getElementById('countD').value;
+                    console.log("sending");
+
+
+                    console.log(files[0]);
+                    var uploadTask = firebase.storage().ref('artist_album_art/' + imageName + ".png").put(
+                        files[0]);
+
+                    console.log('images/' + imageName + ".png");
+                    uploadTask.on('state_changed', function (snapshot) {
+                            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            document.getElementById('upP6').style.width = progress + '%';
+                            console.log(progress + '%');
+                        },
+                        //err
+                        function (error) {
+                            alert('Something went Wrong!');
+                        },
+                        //submit          
+                        function () {
+                            uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                                ImgUrl = url;
+
+
+
+
+                                var data = {
+                                    imageName: imageName,
+                                    imageID: ref.id,
+                                    timestamp: firebase.firestore.FieldValue
+                                        .serverTimestamp(),
+                                    publisher: publisher,
+                                    no: seq,
+                                    active: "1",
+                                    image: ImgUrl
+                                }
+
+
+                                ref.set(data, {
+                                    merge: true
+                                }).then(function () {
+                                    window.alert(
+                                        "Data has been Uploaded Succefully");
+                                    setTimeout(() => {
+                                        window.location.href =
+                                            './gallery_dash.html';
+                                    }, 2000);
+                                }).catch(function (error) {
+                                    window.alert(error, "Something went wrong!");
+                                });
+                            })
+                        });
+                });
+                /*
+                end of user 
+                */
+            } else {
+                window.alert("No Active User");
+            }
+        });
+    </script>
+</body>
+
+</html>

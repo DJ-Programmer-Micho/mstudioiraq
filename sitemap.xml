@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://mstudioiraq.com/</loc>
+  <lastmod>2022-06-05T12:48:39+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://mstudioiraq.com/index.html</loc>
+  <lastmod>2022-06-05T12:48:39+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://mstudioiraq.com/sing.html</loc>
+  <lastmod>2022-06-05T12:44:50+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://mstudioiraq.com/compose.html</loc>
+  <lastmod>2022-06-05T12:43:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mstudioiraq.com/stServices.html</loc>
+  <lastmod>2022-06-05T12:44:55+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://mstudioiraq.com/prServices.html</loc>
+  <lastmod>2022-06-05T12:44:42+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://mstudioiraq.com/gallery.html</loc>
+  <lastmod>2022-06-05T12:44:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mstudioiraq.com/aboutme.html</loc>
+  <lastmod>2022-06-05T12:43:53+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+
+
+</urlset>

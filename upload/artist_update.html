@@ -1,0 +1,465 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Add Artist | M Studio Iraq</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/Mstyle.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-lg d-flex justify-content-between b3 m-3">
+            <a class="navbar-brand my-auto" href="#">
+                <img src="https://i.ibb.co/f036Rm7/MET-Logo.jpg" width="65px"></a>
+            <h3 id="who" class="text-white">
+                </h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="btn btn-outline-secondary nav-link" onclick="out()">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+
+        <div class="row mt-3">
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Artist Name</h3>
+                <input type="text" id="artistName" name="artistName" class="form-control" placeholder="Artist Name" disabled>
+            </div>
+
+
+            <div class="col-md-6 mb-2">
+                <div id="p1" class="form-group col-md-12 mb-2 oldImg"></div>
+                <div id="p2" class="form-group col-md-12 mb-2">
+                    <h5>Album Artist</h5>
+                    <img id="myimg" class="img-fluid">
+                    <a id="select" name="select" class="btn btn-outline-primary">Replace</a>
+                    <input id="imgname" type="hidden" placeholder=":عنوان الصورة" autocomplete="off" required>
+                    <a id="upload" class="btn btn-outline-primary" style="visibility: hidden;">Submit Image First</a>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- <div class="col-md-6 mb-2">
+                <h5>Album Artist</h5>
+                <img id="myimg" class="img-fluid" src="../images/icons/uploadimg.png" width="200" height="200"><br>
+                <button id="select" name="select" class="btn btn-outline-primary">Select first Image</button>
+                <input id="imgname" name="imgname" type="hidden" placeholder=":عنوان الصورة" autocomplete="off"
+                    required>
+            </div> -->
+            <div class="progress form-group">
+                <div id="upP" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                    aria-valuemax="100">
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Card Link</h3>
+                <input type="text" id="cardLink" name="cardLink" class="form-control" placeholder="Card Link"
+                disabled>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Amazon Music</h3>
+                <input type="text" id="amazon" name="amazon" class="form-control" placeholder="Amazon Music">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Anghami</h3>
+                <input type="text" id="anghami" name="anghami" class="form-control" placeholder="Anghami">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Apple Music</h3>
+                <input type="text" id="apple" name="apple" class="form-control" placeholder="Apple Music">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Deezer</h3>
+                <input type="text" id="deezer" name="deezer" class="form-control" placeholder="Deezer">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Instagram</h3>
+                <input type="text" id="instagram" name="instagram" class="form-control" placeholder="Instagram">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Snapchat</h3>
+                <input type="text" id="snapchat" name="snapchat" class="form-control" placeholder="Snapchat">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Soundcloud</h3>
+                <input type="text" id="soundCloud" name="soundCloud" class="form-control" placeholder="Soundcloud">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Spotify</h3>
+                <input type="text" id="spotify" name="spotify" class="form-control" placeholder="Spotify">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">TikTok</h3>
+                <input type="text" id="tiktok" name="tiktok" class="form-control" placeholder="TikTok">
+            </div>
+            <div class="col-6 mt-1">
+                <h3 class="text-left">Youtube</h3>
+                <input type="text" id="youtube" name="youtube" class="form-control" placeholder="Youtube">
+            </div>
+        </div>
+
+        
+        <input type="hidden" id="publisher" required>
+        <input id="trackNameHidden" type="hidden" required>
+        <!-- <input type="text" id="trackNameU" name="trackNameU" class="form-control" placeholder="?"> -->
+
+
+        <section class="mt-5">
+
+                <h4 class="d-flex justify-content-between b3 m-3">
+                    <!-- <a href="logout.php"><i class="fas fa-home"></i></a> -->
+                    Artista Album
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">ADD SUBJECT</button>
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>                -->
+                </h4>
+                <table class="table table-striped table-dark" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" class="text-center">Album Track Art</th>
+                        <th scope="col">Track Name</th>
+                        <th scope="col">Uploaded</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tdata">
+                      <!-- <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                  <div id="loadMoreNews"><button>Load More</button></div>
+
+                </section>
+
+                
+<!-- Add Sub Content : -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Content</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Track Name:</label>
+              <input type="text" class="form-control" id="trackName" name="trackName">
+            </div>
+            <div class="form-group">
+                <h5>Album Track</h5>
+                <img id="myimg2" class="img-fluid" src="../images/icons/uploadimg.png" width="200" height="200"><br>
+                <button id="select2" name="select2" class="btn btn-outline-primary">Track Album</button>
+                <input id="imgname2" name="imgname2" type="hidden" placeholder="Album" autocomplete="off"
+                    required>
+            </div>
+            <div class="progress form-group">
+                <div id="upP2" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="upload2" name="uplo2" type="button" class="btn btn-success">Add Content</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Sub Content : -->
+<div class="modal fade" id="exampleModalU" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Content</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- <form> -->
+            <div class="form-group">
+              <label for="trackNameU" class="col-form-label">Track Name:</label>
+              <input type="text" class="form-control" id="trackNameU" name="trackNameU">
+            </div>
+            <div class="form-group">
+                <h5>Album Track</h5>
+                <div id="p3" class="oldImgTrack"></div>
+                <div id="p4" class="form-group col-md-12 mb-2">
+                    <img id="myimg3" class="img-fluid">
+                    <a id="select3" name="select3" class="btn btn-outline-primary">Replace</a>
+                    <input id="imgname3" type="hidden" name="imgname3" autocomplete="off" required>
+                    <a id="upload3" class="btn btn-outline-primary" style="visibility: hidden;">Submit Image First</a>
+                </div>
+                <!-- <img id="myimg2" class="img-fluid" src="../images/icons/uploadimg.png" width="200" height="200"><br>
+                <button id="select2" name="select2" class="btn btn-outline-primary">Track Album</button>
+                <input id="imgname2" name="imgname2" type="hidden" placeholder="Album" autocomplete="off"
+                    required> -->
+            </div>
+            <div class="progress form-group">
+                <div id="upP3" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                    aria-valuemax="100">
+                </div>
+            </div>
+
+          <!-- </form> -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="wait3" name="uplo3" type="button" class="btn btn-primary">Update Content</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group mt-5">
+            <button id="wait" name="uplo" class="btn btn-primary btn-block">Send</button>
+            <hr>
+            <div class="progress form-group">
+                <div id="upP" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                    aria-valuemax="100">
+                </div>
+            </div>
+            <hr>
+            <a href="../control/admin/dash.html" class="btn btn-danger btn-block">Cancel</a>
+        </div>
+
+    </div>
+  <!-- Font Awesome -->
+  <script src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="../db/db.js"></script>
+    <script src="../db/update_artist.js"></script>
+    <script src="../db/moment-min.js"></script>
+    <input type="hidden" id="publisher2" name="publisher2" required> 
+    <input type="hidden" id="countD" name="publisher2" required>
+
+
+    <script>
+        const auth = firebase.auth();
+    </script>
+    <script src="../db/sub_add.js"></script>
+    <script src="../db/sub_update.js"></script>
+    <script src="../db/sub_read.js"></script>
+    <script src="../db/sub_delete.js"></script>
+    <input id="trackNameHidden" type="hidden" required>
+    <script>
+        /*
+    user
+    */
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+
+                const who = document.querySelector('#who');
+                var pub = user.uid;
+                db.collection('user').where("uid", "==", pub).get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        var publisherName = doc.data().publisher;
+                        who.innerHTML = "Welcome " + publisherName;
+                        document.querySelector('#publisher').value = publisherName;
+                    })
+                })
+
+
+                window.onload = function () {
+                    document.getElementById('upload').style.visibility = document.getElementById('upload')
+                        .style.visibility == 'hidden' ? 'visible' : 'hidden';
+
+                    var input = document.getElementById("artistName").focus();
+                }
+
+
+
+                var ImgName, ImgUrl;
+                var files = [];
+                var reader;
+                const ref = db.collection("artist").doc(id);
+                // var refc = db.doc("count/upload");
+                // var refd = db.doc("countD/no");
+
+
+
+                const upload = document.querySelector("#upload");
+                const update = document.querySelector("#wait");
+                // const count = document.querySelector("#imgname");
+
+                //Adding Image
+                document.getElementById("select").onclick = function (e) {
+                    document.getElementById('primaryimg').style.visibility = document.getElementById('primaryimg').style.visibility == 'hidden' ? 'visible' : 'hidden';
+                    document.getElementById('p1').style.height = '1px';
+                    document.getElementById('upload').style.visibility = document.getElementById('upload').style.visibility == 'hidden' ? 'visible' : 'visible';
+                    document.getElementById('wait').disabled = true;
+
+                    var input = document.createElement('input');
+                    input.type = 'file';
+
+                    input.onchange = e => {
+                        files = e.target.files;
+                        reader = new FileReader();
+                        reader.onload = function () {
+                            document.getElementById("myimg").src = reader.result;
+                        }
+                        reader.readAsDataURL(files[0]);
+                    }
+                    input.click();
+                }
+
+
+                upload.addEventListener("click", function () {
+
+
+
+                    ImgName = document.getElementById('imgname').value;
+
+                    console.log(files[0]);
+                    var uploadTask = firebase.storage().ref('artist_album_art/' + artistName + ".png").put(files[0]);
+
+                    uploadTask.on('state_changed', function (snapshot) {
+                            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            document.getElementById('upP').style.width = progress + '%';
+                            console.log(progress + '%');
+                        },
+                        //err
+                        function (error) {
+                            alert('Something went Wrong!');
+                        },
+                        //submit          
+                        function () {
+                            uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                                ImgUrl = url;
+
+                                var data = {
+                                    image: ImgUrl
+            };
+
+
+
+
+                                ref.update(data).then(function(){
+                                    window.alert("Data has been Uploaded Succefully");
+                                    document.getElementById('wait').removeAttribute('disabled');
+                                }).catch(function(error) {
+                                    window.alert("Something went wrong!");
+                                });
+                                // ref.doc(artistName).set(data, {merge: true}).then(function () {
+                                //     window.alert("Data has been Uploaded Succefully");
+                                //     setTimeout(() => {
+                                //         window.location.href ='../control/admin/dash.html';
+                                //     }, 2000);
+                                // }).catch(function (error) {
+                                //     window.alert(error, "Something went wrong!");
+                                // });
+                            })
+                        });
+                });
+
+
+update.addEventListener("click", function(){
+                    artistName = document.getElementById('artistName').value;
+                    cardLink = document.getElementById('cardLink').value;
+                    amazon = document.getElementById('amazon').value;
+                    anghami = document.getElementById('anghami').value;
+                    apple = document.getElementById('apple').value;
+                    deezer = document.getElementById('deezer').value;
+                    instagram = document.getElementById('instagram').value;
+                    snapchat = document.getElementById('snapchat').value;
+                    soundCloud = document.getElementById('soundCloud').value;
+                    spotify = document.getElementById('spotify').value;
+                    tiktok = document.getElementById('tiktok').value;
+                    youtube = document.getElementById('youtube').value;
+                    seq = document.getElementById('countD').value;
+                    publisher = document.getElementById('publisher').value;
+                    console.log("sending");
+
+
+        //submit         
+
+        var data = {
+                                    amazon: amazon,
+                                    anghami: anghami,
+                                    apple: apple,
+                                    deezer: deezer,
+                                    instagram: instagram,
+                                    snapchat: snapchat,
+                                    soundCloud: soundCloud,
+                                    spotify: spotify,
+                                    tiktok: tiktok,
+                                    youtube: youtube,
+                                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                                    publisher: publisher,
+                                    no: seq,
+                                    active: "1",
+                                
+                                }
+                                
+       ref.update(data).then(function(){
+            window.alert("Data has been Uploaded Succefully");
+            setTimeout(() => { '../control/admin/dash.html'; }, 2000);
+        }).catch(function(error) {
+            window.alert("Something went wrong!");
+        });
+    })
+
+                /*
+                end of user 
+                */
+            } else {
+                window.alert("No Active User");
+            }
+        });
+    </script>
+</body>
+
+</html>
